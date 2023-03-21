@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using CatalogService.Application.Categories.Dtos;
+using CatalogService.Application.Categories.Dto;
 using MediatR;
 
 namespace CatalogService.Application.Categories.Queries;
