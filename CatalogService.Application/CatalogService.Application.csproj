@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Categories\Translations\" />
     <Folder Include="Categories\Queries\" />
     <Folder Include="Items\Commands\" />
     <Folder Include="Items\Queries\" />

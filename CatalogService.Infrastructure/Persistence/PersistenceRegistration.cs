@@ -10,12 +10,25 @@ namespace CatalogService.Infrastructure.Persistence;
 
 public static class PersistenceRegistration
 {
+    private const string UseInMemoryDatabase = "UseInMemoryDatabase";
+    private const string DefaultConnection = "DefaultConnection";
+
     public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
-        string connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new ArgumentNullException(nameof(connectionString));
-        services.AddDbContext<ApplicationDbContext>(options =>
-                       options.UseSqlServer(connectionString
-                           , b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+        if (configuration.GetValue<bool>(UseInMemoryDatabase))
+        {
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseInMemoryDatabase("CleanArchitectureDb"));
+        }
+        else
+        {
+            string connectionString = configuration.GetConnectionString(DefaultConnection) ?? throw new ArgumentNullException(nameof(connectionString));
+            services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseSqlServer(connectionString,
+                    b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
+        }
+
+        services.AddScoped<ApplicationDbContextInitialiser>();
 
         services.AddTransient<ICategoryRepository, CategoryRepository>();
         services.AddTransient<IItemRepository, ItemRepository>();
