@@ -24,15 +24,15 @@ public class BaseRepository<T> where T : BaseEntity
     public async Task<bool> UpdateAsync(T entity)
     {
         var entry = DbSet.Update(entity);
-        await DbContext.SaveChangesAsync();
-        return entry.State == EntityState.Modified;
+        var rowsAffected = await DbContext.SaveChangesAsync();
+        return rowsAffected > 0;
     }
 
     public async Task<bool> DeleteAsync(T entity)
     {
         var entry = DbSet.Remove(entity);
-        await DbContext.SaveChangesAsync();
-        return entry.State == EntityState.Deleted;
+        var rowsAffected = await DbContext.SaveChangesAsync();
+        return rowsAffected > 0;
     }
     public async Task<T> GetByIdAsync(int id)
     {
