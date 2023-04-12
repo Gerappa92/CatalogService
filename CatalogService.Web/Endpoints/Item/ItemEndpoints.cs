@@ -7,9 +7,9 @@ namespace CatalogService.Web.Endpoints.Item;
 
 public class ItemEndpoints
 {
-    public async Task<IResult> ListItems([FromBody] ListItemsQuery query, [FromServices] IMediator mediator)
+    public async Task<IResult> ListItems([FromServices] IMediator mediator)
     {
-        var result = await mediator.Send(query);
+        var result = await mediator.Send(new ListItemsQuery());
         return Results.Ok(result);
     }
 
