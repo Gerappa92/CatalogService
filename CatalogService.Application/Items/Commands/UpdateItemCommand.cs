@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using CatalogService.Domain.Entities;
+﻿using CatalogService.Domain.Entities;
 using MediatR;
 
 namespace CatalogService.Application.Items.Commands;
@@ -17,17 +16,15 @@ public class UpdateItemCommand : IRequest<bool>
 public class UpdateItemCommandHandler : IRequestHandler<UpdateItemCommand, bool>
 {
     private readonly IItemRepository _itemRepository;
-    private readonly IMapper _mapper;
 
-    public UpdateItemCommandHandler(IItemRepository itemRepository, IMapper mapper)
+    public UpdateItemCommandHandler(IItemRepository itemRepository)
     {
         _itemRepository = itemRepository;
-        _mapper = mapper;
     }
 
     public async Task<bool> Handle(UpdateItemCommand request, CancellationToken cancellationToken)
     {
-        var item = _mapper.Map<Item>(request);
+        var item = request.Map();
         return await _itemRepository.UpdateAsync(item);
     }
 }
