@@ -5,9 +5,11 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogService.Domain", "CatalogService.Domain\CatalogService.Domain.csproj", "{C26F795E-3488-413E-9475-79C1C10B2B53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogService.Application", "CatalogService.Application\CatalogService.Application.csproj", "{7DD0585E-828E-4D8A-9DE0-6B3D6CA94FF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogService.Application", "CatalogService.Application\CatalogService.Application.csproj", "{7DD0585E-828E-4D8A-9DE0-6B3D6CA94FF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogService.Infrastructure", "CatalogService.Infrastructure\CatalogService.Infrastructure.csproj", "{89F8BC1A-8429-43E7-8C61-FA7D4A7CD89B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CatalogService.Infrastructure", "CatalogService.Infrastructure\CatalogService.Infrastructure.csproj", "{89F8BC1A-8429-43E7-8C61-FA7D4A7CD89B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CatalogService.Web", "CatalogService.Web\CatalogService.Web.csproj", "{5D891210-86CA-43D0-8150-3412E105845E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{89F8BC1A-8429-43E7-8C61-FA7D4A7CD89B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89F8BC1A-8429-43E7-8C61-FA7D4A7CD89B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89F8BC1A-8429-43E7-8C61-FA7D4A7CD89B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D891210-86CA-43D0-8150-3412E105845E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D891210-86CA-43D0-8150-3412E105845E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D891210-86CA-43D0-8150-3412E105845E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D891210-86CA-43D0-8150-3412E105845E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
