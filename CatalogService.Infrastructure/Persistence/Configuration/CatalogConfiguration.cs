@@ -9,6 +9,9 @@ public class CatalogConfiguration : IEntityTypeConfiguration<Category>
     public void Configure(EntityTypeBuilder<Category> builder)
     {
         builder.Property(c => c.Name).IsRequired().HasMaxLength(50);
-        builder.OwnsOne(c => c.Parent);
+        builder.HasOne(c => c.Parent)
+            .WithMany(c => c.Children)
+            .HasForeignKey(c => c.ParentId)
+            .OnDelete(DeleteBehavior.Restrict);
     }
 }
