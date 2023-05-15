@@ -7,12 +7,6 @@
     <CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>-->
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Categories\Queries\" />
-    <Folder Include="Items\Commands\" />
-    <Folder Include="Items\Translations\" />
-    <Folder Include="Items\Queries\" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="MediatR" Version="12.0.1" />

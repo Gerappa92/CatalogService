@@ -1,4 +1,5 @@
 using CatalogService.Application;
+using CatalogService.Infrastructure.MessageBroker;
 using CatalogService.Infrastructure.Persistence;
 using CatalogService.Web.Endpoints.Category;
 using CatalogService.Web.Endpoints.Item;
@@ -12,6 +13,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.AddPersistence(builder.Configuration);
+        builder.Services.AddMessageBroker(builder.Configuration);
         builder.Services.AddApplication();
 
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

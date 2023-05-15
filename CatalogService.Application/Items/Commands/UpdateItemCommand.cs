@@ -1,4 +1,4 @@
-﻿using CatalogService.Domain.Entities;
+﻿using CatalogService.Application.Items.Messages;
 using MediatR;
 
 namespace CatalogService.Application.Items.Commands;
@@ -16,15 +16,23 @@ public class UpdateItemCommand : IRequest<bool>
 public class UpdateItemCommandHandler : IRequestHandler<UpdateItemCommand, bool>
 {
     private readonly IItemRepository _itemRepository;
+    private readonly IMessageBroker<ItemUpdateMessage> _messageBroker;
 
-    public UpdateItemCommandHandler(IItemRepository itemRepository)
+    public UpdateItemCommandHandler(IItemRepository itemRepository, IMessageBroker<ItemUpdateMessage> messageBroker)
     {
         _itemRepository = itemRepository;
+        _messageBroker = messageBroker;
     }
 
     public async Task<bool> Handle(UpdateItemCommand request, CancellationToken cancellationToken)
     {
         var item = request.Map();
-        return await _itemRepository.UpdateAsync(item);
+        var updated = await _itemRepository.UpdateAsync(item);
+        if (updated)
+        {
+            var msg = item.MapToMessage();
+            _messageBroker.Send(msg);
+        }
+        return updated;
     }
 }
