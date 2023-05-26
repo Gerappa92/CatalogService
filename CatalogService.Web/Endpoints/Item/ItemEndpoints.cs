@@ -1,5 +1,4 @@
-﻿using System.Data;
-using CatalogService.Application.Items.Commands;
+﻿using CatalogService.Application.Items.Commands;
 using CatalogService.Application.Items.Queries;
 using CatalogService.Web.Authorization;
 using MediatR;
