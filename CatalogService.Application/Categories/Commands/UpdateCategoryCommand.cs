@@ -1,5 +1,4 @@
-﻿using CatalogService.Domain.Entities;
-using MediatR;
+﻿using MediatR;
 
 namespace CatalogService.Application.Categories.Commands;
 

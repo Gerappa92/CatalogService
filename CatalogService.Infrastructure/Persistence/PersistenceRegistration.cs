@@ -22,13 +22,13 @@ public static class PersistenceRegistration
         }
         else
         {
-            string connectionString = configuration.GetConnectionString(DefaultConnection) ?? throw new ArgumentNullException(nameof(connectionString));
+            var connectionString = configuration.GetConnectionString(DefaultConnection);
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString,
                     b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
         }
 
-        services.AddScoped<ApplicationDbContextInitialiser>();
+        services.AddScoped<ApplicationDbContextInitializer>();
 
         services.AddTransient<ICategoryRepository, CategoryRepository>();
         services.AddTransient<IItemRepository, ItemRepository>();

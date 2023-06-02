@@ -5,14 +5,19 @@ using CatalogService.Web.Endpoints.Category;
 using CatalogService.Web.Endpoints.Item;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
+using System.Diagnostics;
+
 
 namespace CatalogService.Web;
 
-public class Program
+public static class Program
 {
     public static void Main(string[] args)
     {
-        var builder = WebApplication.CreateBuilder(args);
+        WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+
+        var x = new Stopwatch();
+        x.Start();
 
         builder.Services.AddAuthentication(options =>
             {
@@ -55,12 +60,12 @@ public class Program
                             Id = "Bearer"
                         }
                     },
-                    new string[] { }
+                    Array.Empty<string>()
                 }
             });
         });
 
-        var app = builder.Build();
+        WebApplication app = builder.Build();
 
         app.UseAuthentication();
         app.UseAuthorization();
@@ -73,7 +78,6 @@ public class Program
         }
 
         app.UseHttpsRedirection();
-            
         app.RegisterCategoryEndpoints();
         app.RegisterItemEndpoints();
 

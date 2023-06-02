@@ -1,8 +1,6 @@
-﻿using CatalogService.Domain.Entities;
-using MediatR;
+﻿using MediatR;
 
 namespace CatalogService.Application.Categories.Commands;
-
 
 public record CreateCategoryCommand(string Name, Uri Image, int? ParentId) : IRequest<int>;
 
@@ -21,4 +19,3 @@ public class CreateCategoryCommandHandler : IRequestHandler<CreateCategoryComman
         return await _categoryRepository.AddAsync(category);
     }
 }
-
